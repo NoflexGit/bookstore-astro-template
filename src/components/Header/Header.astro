@@ -1,8 +1,8 @@
 ---
-import Logo from "../Logo/Logo.astro";
+import Logo from '../Logo/Logo.astro';
 ---
 
-<header class="h-14 bg-violet-600">
+<header class="h-14 bg-violet-600 sticky top-0 w-full">
   <div class="container mx-auto flex h-full items-center justify-between">
     <a class="flex items-center gap-2" href="#">
       <Logo />
@@ -10,52 +10,24 @@ import Logo from "../Logo/Logo.astro";
     <nav class="hidden items-center gap-8 md:flex">
       <ul class="flex gap-6">
         <li>
-          <a
-            class="text-sm text-white transition-colors hover:text-violet-200"
-            href="#"
-          >
-            Categories
-          </a>
+          <a class="text-sm text-white transition-colors hover:text-violet-200" href="#"> Categories</a>
         </li>
         <li>
-          <a
-            class="text-sm text-white transition-colors hover:text-violet-200"
-            href="#"
-          >
-            New 2023
-          </a>
+          <a class="text-sm text-white transition-colors hover:text-violet-200" href="#"> New 2023</a>
         </li>
         <li>
-          <a
-            class="text-sm text-white transition-colors hover:text-violet-200"
-            href="#"
-          >
-            Bestsellers
-          </a>
+          <a class="text-sm text-white transition-colors hover:text-violet-200" href="#"> Bestsellers</a>
         </li>
         <li>
-          <a
-            class="text-sm text-white transition-colors hover:text-violet-200"
-            href="#"
-          >
-            Gifts
-          </a>
+          <a class="text-sm text-white transition-colors hover:text-violet-200" href="#"> Gifts</a>
         </li>
         <li>
-          <a
-            class="text-sm text-white transition-colors hover:text-violet-200"
-            href="#"
-            >Shops
-          </a>
+          <a class="text-sm text-white transition-colors hover:text-violet-200" href="#">Shops</a>
         </li>
       </ul>
     </nav>
     <div class="flex items-center gap-4">
-      <a
-        class="rounded-md bg-violet-400 p-2 text-white hover:bg-violet-300"
-        href="#"
-        aria-label="Wishlist"
-      >
+      <a class="rounded-md bg-violet-400 p-2 text-white hover:bg-violet-300" href="#" aria-label="Wishlist">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -71,11 +43,7 @@ import Logo from "../Logo/Logo.astro";
           ></path>
         </svg>
       </a>
-      <a
-        class="rounded-md bg-violet-400 p-2 text-white hover:bg-violet-300"
-        href="#"
-        aria-label="Cart"
-      >
+      <a class="rounded-md bg-violet-400 p-2 text-white hover:bg-violet-300" href="#" aria-label="Cart">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -91,9 +59,7 @@ import Logo from "../Logo/Logo.astro";
           ></path>
         </svg>
       </a>
-      <a
-        class="rounded-md bg-violet-400 px-4 py-2 text-xs font-bold text-white hover:bg-violet-300"
-        href="#">Sign In</a
+      <a class="rounded-md bg-violet-400 px-4 py-2 text-xs font-bold text-white hover:bg-violet-300" href="#">Sign In</a
       >
     </div>
   </div>
