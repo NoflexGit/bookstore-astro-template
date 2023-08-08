@@ -1,0 +1,18 @@
+---
+import BookCover from '../BookCover/BookCover.astro';
+import Button from '../ui/Button/Button.astro';
+
+const { imgUrl, title, author, price } = Astro.props;
+---
+
+<div class="flex flex-col gap-2">
+  <div class="flex h-72 justify-center">
+    <BookCover src={imgUrl} alt={title} />
+  </div>
+  <div class="flex flex-col gap-2 text-center">
+    <a class="text-lg font-bold" href="/product">{title}</a>
+    <p class="text-sm">{author}</p>
+    <p class="text-sm font-bold">${price}</p>
+    <Button>Add to cart</Button>
+  </div>
+</div>

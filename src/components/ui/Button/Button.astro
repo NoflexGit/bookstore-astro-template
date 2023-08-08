@@ -1,0 +1,20 @@
+---
+const { size = 'lg' } = Astro.props;
+---
+
+<button
+  class="rounded-md bg-indigo-700 hover:bg-indigo-600 font-bold text-white"
+  class:list={[
+    {
+      'px-2 py-2 text-xs': size === 'sm',
+    },
+    {
+      'px-3 py-2 text-sm': size === 'md',
+    },
+    {
+      'px-4 py-2 text-base': size === 'lg',
+    },
+  ]}
+>
+  <slot />
+</button>
