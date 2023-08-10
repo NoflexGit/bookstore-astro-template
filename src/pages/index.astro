@@ -1,58 +1,65 @@
 ---
-import BookCover from '../components/BookCover/BookCover.astro';
-import Hero from '../components/Hero/Hero.astro';
-import ProductCard from '../components/ProductCard/ProductCard.astro';
-import PageLayout from '../layouts/PageLayout/PageLayout.astro';
-import book1 from '../assets/images/book-cover-1.jpg';
+import { supabase } from '../supabase'
+import Advantages from '../components/Advantages/Advantages.astro'
+import BookCover from '../components/BookCover/BookCover.astro'
+import Hero from '../components/Hero/Hero.astro'
+import ProductsRow from '../components/ProductsRow/ProductsRow.astro'
+import PageLayout from '../layouts/PageLayout/PageLayout.astro'
 
-const items = new Array(5).fill('');
+let { data: books, error } = await supabase.from('books').select(`
+    *,
+    author:authors (
+      name
+    )
+  `)
 ---
 
 <PageLayout>
-  <div class="flex flex-col gap-12 my-12">
-    <Hero />
-    <section class="container">
-      <h2 class="text-2xl font-bold">Bestsellers 2023</h2>
-      <div class="xs:grid-cols-2 mt-4 grid grid-cols-2 gap-8 sm:gap-12 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        <ProductCard imgUrl={book1} />
-      </div>
-    </section>
-    <section class="container">
-      <h2 class="mb-4 text-2xl font-bold">New 2023</h2>
-      <div class="xs:grid-cols-2 mt-4 grid grid-cols-2 gap-8 sm:gap-12 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {items.map(() => <ProductCard />)}
-      </div>
-    </section>
-    <section class="container">
-      <h2 class="mb-4 text-3xl font-bold">For you</h2>
-      <div class="grid grid-cols-1 gap-8 rounded-2xl bg-indigo-100 p-8 md:grid-cols-2">
-        <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
-          <div class="flex h-72 justify-center">
-            <BookCover src={book1} />
-          </div>
-          <div class="flex flex-col items-start gap-2 md:col-span-2">
-            <a class="rounded-lg bg-indigo-200 px-2 py-1 text-xs text-indigo-800" href="#"> Biography</a>
-            <div>
-              <h3 class="text-lg font-bold">Abroad in Japan</h3>
-              <p class="text-sm">Chris Broad</p>
-            </div>
-            <p class="text-2xl font-bold">$14.99</p>
-            <button class="rounded-md bg-indigo-700 px-3 py-2 text-sm font-bold text-white"> Add to cart</button>
-          </div>
-        </div>
-        <div class="grid grid-cols-3 gap-4">
-          <div class="flex h-72 justify-center">
-            <BookCover src={book1} />
-          </div>
-          <div class="col-span-2">
-            <div>
-              <h3 class="text-lg font-bold">Abroad in Japan</h3>
-              <p class="text-sm">Chris Broad</p>
-            </div>
-            <p class="text-sm">14.99</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+	<div class="flex flex-col gap-16 my-12">
+		<Hero />
+		<div class="container">
+			<Advantages />
+		</div>
+		<div class="container">
+			<ProductsRow title="New Releases" products={books} />
+		</div>
+		<div class="container">
+			<ProductsRow title="Bestsellers" products={books} />
+		</div>
+	</div>
+	<section class="container">
+		<h2 class="mb-4 text-3xl font-bold">For you</h2>
+		<div class="grid grid-cols-1 gap-8 rounded-2xl bg-indigo-100 p-8 md:grid-cols-2">
+			<div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+				<div class="flex h-72 justify-center">
+					<BookCover />
+				</div>
+				<div class="flex flex-col items-start gap-2 md:col-span-2">
+					<a class="rounded-lg bg-indigo-200 px-2 py-1 text-xs text-indigo-800" href="#">
+						Biography</a
+					>
+					<div>
+						<h3 class="text-lg font-bold">Abroad in Japan</h3>
+						<p class="text-sm">Chris Broad</p>
+					</div>
+					<p class="text-2xl font-bold">$14.99</p>
+					<button class="rounded-md bg-indigo-700 px-3 py-2 text-sm font-bold text-white">
+						Add to cart</button
+					>
+				</div>
+			</div>
+			<div class="grid grid-cols-3 gap-4">
+				<div class="flex h-72 justify-center">
+					<BookCover />
+				</div>
+				<div class="col-span-2">
+					<div>
+						<h3 class="text-lg font-bold">Abroad in Japan</h3>
+						<p class="text-sm">Chris Broad</p>
+					</div>
+					<p class="text-sm">14.99</p>
+				</div>
+			</div>
+		</div>
+	</section>
 </PageLayout>

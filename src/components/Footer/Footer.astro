@@ -1,1 +1,130 @@
-<footer class="h-96 bg-indigo-950">Footer</footer>
+---
+import Logo from '../Logo/Logo.astro'
+import mastercard from '/src/assets/images/mastercard.svg'
+import visa from '/src/assets/images/visa.svg'
+import discover from '/src/assets/images/discover.svg'
+import applePay from '/src/assets/images/apple-pay.svg'
+import googlePay from '/src/assets/images/google-pay.svg'
+import facebook from '/src/assets/images/facebook.svg'
+import twitter from '/src/assets/images/twitter.svg'
+import instagram from '/src/assets/images/instagram.svg'
+import youtube from '/src/assets/images/youtube.svg'
+import discord from '/src/assets/images/discord.svg'
+
+type Socials = {
+	name: string
+	icon: string
+	link: string
+}
+
+const socials: Array<Socials> = [
+	{
+		name: 'Facebook',
+		icon: facebook,
+		link: '#'
+	},
+	{
+		name: 'Twitter',
+		icon: twitter,
+		link: '#'
+	},
+	{
+		name: 'Instagram',
+		icon: instagram,
+		link: '#'
+	},
+	{
+		name: 'Youtube',
+		icon: youtube,
+		link: '#'
+	},
+	{
+		name: 'Discord',
+		icon: discord,
+		link: '#'
+	}
+]
+---
+
+<footer class="mt-24">
+	<section class="bg-violet-200 py-12">
+		<div class="container flex items-center gap-8 justify-center flex-col">
+			<span class="text-2xl font-bold">Sign up for our newsletters</span>
+			<form>
+				<input
+					class="bg-white p-4 rounded-lg w-40 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2"
+					aria-label="Enter your email address"
+					placeholder="Enter your email address"
+				/>
+				<button class="bg-violet-500 hover:bg-violet-600 p-4 rounded-lg text-white" type="submit"
+					>Subscribe</button
+				>
+			</form>
+		</div>
+	</section>
+	<section class="bg-indigo-950 py-8 text-white">
+		<div class="gap-12 md:gap-20 container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+			<div class="flex flex-col gap-8">
+				<Logo />
+				<p class="text-indigo-100 text-sm">
+					From biographies and comics to novels and poetry, you can explore millions of titles
+					across categories on Bookstore.
+				</p>
+
+				<ul class="flex gap-4">
+					{
+						socials.map((element) => (
+							<li>
+								<a
+									href={element.link}
+									class="bg-violet-700 rounded hover:bg-violet-600 h-8 w-8 flex items-center justify-center"
+								>
+									<img src={element.icon} alt={element.name} class="w-6 h-4" />
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+			<nav>
+				<h4 class="text-lg mb-4 font-bold">Categories</h4>
+				<ul class="text-sm grid gap-4 items-center">
+					<li><a href="#fiction">Fiction</a></li>
+					<li><a href="#mystery">Mystery & Thriller</a></li>
+					<li><a href="#scifi">Science Fiction & Fantasy</a></li>
+					<li><a href="#romance">Romance</a></li>
+					<li><a href="#nonfiction">Non-Fiction</a></li>
+					<li><a href="#selfhelp">Personal Development</a></li>
+				</ul>
+			</nav>
+			<nav>
+				<h4 class="text-lg mb-4 font-bold">Information</h4>
+				<ul class="text-sm grid gap-4">
+					<li><a href="/">About us</a></li>
+					<li><a href="/">Events</a></li>
+					<li><a href="/">Jobs</a></li>
+					<li><a href="/">Delivery</a></li>
+					<li><a href="/">Payment</a></li>
+				</ul>
+			</nav>
+			<div>
+				<h4 class="text-lg mb-4 font-bold">Contact Us</h4>
+				<div class="text-sm grid gap-4">
+					<p>If you have any questions or inquiries, feel free to get in touch:</p>
+					<p>Email: <a href="#">contact@bookstore.com</a></p>
+					<p>Call-center: +1 (123) 456-7890</p>
+				</div>
+				<div class="mt-12">
+					<h4 class="text-lg mb-4 font-bold">We accept</h4>
+					<div class="flex gap-4 mt-4 flex-wrap">
+						<img src={mastercard} alt="Mastercard" class="w-8 h-6" />
+						<img src={visa} alt="Visa" class="w-8 h-6" />
+						<img src={discover} alt="Discover" class="w-8 h-6" />
+						<img src={applePay} alt="Apple Pay" class="w-8 h-6" />
+						<img src={googlePay} alt="Google Pay" class="w-8 h-6" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</footer>
